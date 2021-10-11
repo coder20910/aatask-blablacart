@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/aatask-blablacart/static/css/main.42f7af81.chunk.css",
+    "main.js": "/aatask-blablacart/static/js/main.838e1556.chunk.js",
+    "main.js.map": "/aatask-blablacart/static/js/main.838e1556.chunk.js.map",
+    "runtime-main.js": "/aatask-blablacart/static/js/runtime-main.45f7d882.js",
+    "runtime-main.js.map": "/aatask-blablacart/static/js/runtime-main.45f7d882.js.map",
+    "static/js/2.af7ae613.chunk.js": "/aatask-blablacart/static/js/2.af7ae613.chunk.js",
+    "static/js/2.af7ae613.chunk.js.map": "/aatask-blablacart/static/js/2.af7ae613.chunk.js.map",
+    "index.html": "/aatask-blablacart/index.html",
+    "static/css/main.42f7af81.chunk.css.map": "/aatask-blablacart/static/css/main.42f7af81.chunk.css.map",
+    "static/js/2.af7ae613.chunk.js.LICENSE.txt": "/aatask-blablacart/static/js/2.af7ae613.chunk.js.LICENSE.txt",
+    "static/media/book.8b7b88b3.jpg": "/aatask-blablacart/static/media/book.8b7b88b3.jpg",
+    "static/media/smartphone.63eee34b.jpg": "/aatask-blablacart/static/media/smartphone.63eee34b.jpg",
+    "static/media/speaker.e5091a1d.jpg": "/aatask-blablacart/static/media/speaker.e5091a1d.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.45f7d882.js",
+    "static/js/2.af7ae613.chunk.js",
+    "static/css/main.42f7af81.chunk.css",
+    "static/js/main.838e1556.chunk.js"
+  ]
+}
