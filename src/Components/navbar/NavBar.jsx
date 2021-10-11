@@ -1,13 +1,14 @@
 import React, {useState, useEffect} from 'react';
 import {connect} from "react-redux";
-import {useHistory} from "react-router";
+
+import './NavBar.css';
+
+import CartPage from '../cart/CartPage';
 
 function NavBar({cart}) {
-    // let cart = props.cart;
-    const history = useHistory();
-
-    const handleGoToCart = () => {
-        history.push(`/cart`);
+    const [cartStatus, setCartStatus] = useState(false);
+    const handleCart = () => {
+        setCartStatus(!cartStatus);
     }
     const [cartCount, setCount] = useState(0);
 
@@ -19,9 +20,34 @@ function NavBar({cart}) {
 
     }, [cart, cartCount])
     return (
-        <div style={{backgroundColor:"gray", height:"5rem"}}> 
-            <p>Number of items in Cart : {cartCount}</p>
-            <button onClick={handleGoToCart}>Go to cart</button>
+        <div className="parent">
+            <header>
+                {cartStatus === true
+
+                    ?<div className="cartInHeader">
+                        <CartPage></CartPage>
+                    </div>
+                    :<></>
+                }
+                <div className="logoName">        
+                    <span >BlablaCart</span>
+                </div> 
+                <nav className="headerContentRight">
+                    <ul>
+                        <li className="cart">
+                            <span onClick={handleCart}>CART</span>
+                            <span className="badge">{cartCount}</span>
+                        </li>
+                        <li>
+                            <div className="avatarClass">
+                                DP
+                            </div>
+                        </li>
+                        <li className="logoName">Username</li>
+                    </ul>
+                </nav>
+            </header>
+            <br />
         </div>
     )
 }

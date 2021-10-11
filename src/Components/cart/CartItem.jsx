@@ -1,24 +1,45 @@
 import React, {useState} from 'react';
 import {connect} from "react-redux";
+import "./CartItem.css"
 
 function CartItem({item, adjustItemQty, deleteFromCart}) {
     
     const [itemCount, setInput] = useState(item.count);
     
-    const handleInput = (e) => {
-        if(e.target.value > 0){
-            setInput(e.target.value);
-            adjustItemQty(item.id, e.target.value);
+    const handleUpButton=  ()=>{
+        adjustItemQty(item.id, itemCount+1);
+        setInput(itemCount+1);
+    }
+    const handleDownButton = () =>{
+        if(itemCount>1){
+            setInput(itemCount -1)
+            adjustItemQty(item.id, itemCount-1);
         }
     }
     return (
-        <div key={item.id}>
-            <img src={item.image} style={{height:"10rem"}} alt={item.title} />
-            <div>{item.title}</div>
-            <div>{item.price}</div>
-            <div>{item.description}</div>
-            <button onClick={()=> deleteFromCart(item.id)}>Delete</button>
-            <input type="number"  min="1" value={itemCount} onChange={handleInput}/>
+        <div className="cartItem" key={item.id}>
+            <div className="productImageCart">
+                <img src={item.image} alt={item.title} />
+            </div>
+            
+            <div className="productTitleAndQuantity">
+                <div>{item.title}</div>
+                    <div className="quantity">
+                    Quantity :
+                    <div className="upDown">
+                        <div class="arrow arrowUp" onClick={handleUpButton}></div>
+                        <div>
+                            <input className="inputNum" type="number"  min="1" value={itemCount}/>
+                        </div>
+                        <div class="arrow arrowDown" onClick={handleDownButton}></div>
+                    </div>
+                    </div>
+            </div>
+            <div className="removeProduct">
+                <div className="removeProductButton">
+                    <button onClick={()=> deleteFromCart(item.id)}>Remove</button>
+                </div>
+            </div>
         </div>
     )
 }

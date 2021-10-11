@@ -1,0 +1,73 @@
+*{
+    background-color: #cfe2f3;
+    box-sizing: border-box;
+    margin:0;
+    padding: 0;
+}
+.parent{
+
+    border: 1px solid;
+}
+.navbar{
+    height: 5rem;
+    width: 100%;
+    background-color: #cfe2f3;
+    display: flex;
+}
+header{
+    position: relative;
+    height: 6rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.headerContentRight{
+    padding: 0;
+    margin: 0;
+}
+.headerContentRight ul{
+    list-style: none;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+}
+.headerContentRight ul li{
+    margin: 0 0.5rem;
+}
+.avatarClass{
+    border: 1px solid;
+    border-radius: 50%;
+    padding: 0.75rem;
+}
+.cartInHeader{
+    background-color: #3d85c6;
+    position: absolute;
+    right: 1rem;
+    top: 5rem;
+    height: auto;
+    width: 25%; 
+    padding: 0.5rem;
+}
+.logoName{
+    cursor: pointer;
+    margin-left: 10rem;
+    font-size: 1.5rem;
+}
+.cart{
+    cursor: pointer;
+    background-color: #cfe2f3;
+    border: 0.5px solid;
+    display: inline-block;
+    font-size: 20px;
+    padding: 5px 12px;
+    position: relative;
+}
+.cart .badge {
+    position: absolute;
+    top: -25px;
+    left: -15px;
+    padding: 5px 10px;
+    border-radius: 50%;
+    background-color: black;
+    color: white;
+  }

@@ -1,39 +1,58 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import { connect } from "react-redux";
-import {useHistory } from 'react-router';
+import "./HomePage.css"
 
 function HomePage(props) {
-  const history = useHistory();
-  const handleViewItem = (product) => {
-    props.viewItem(product);
-    history.push(`/product/${product.id}`);
-  };
+  let {products, categories} = props;
+  const [currentCategory, setCurrentCategory]  = useState("All");  
+  const [productsToDispay, setProducts] = useState([]);
+
+  const handleCategory = (category) => {
+    setCurrentCategory(category)
+    if (category==="All"){
+      setProducts(products)
+      return ;
+    } 
+    let filteredProducts = products.filter((obj)=>{
+      return obj.category === category;
+    })
+    setProducts(filteredProducts);
+  }
+  useEffect(() => {
+    setProducts(products);
+  },[]);
   return (
-    <>
-      {props.products.map((productObj) => {
-        return (
-          <div
-            key={productObj.id}
-            style={{ width: "20rem", display: "flex", flexDirection: "column" }}
-          >
-            <img src={productObj.image} style={{ height: "10rem" }} alt={productObj.title} />
-            <div>
-              <h2>{productObj.title}</h2>
+    <div className="main">
+        <div className="category-all">
+          <div className="category">Categories</div>
+          {
+            categories.map((category)=>{
+              return <div className="category" onClick={()=>handleCategory(category)}>{category}</div>
+            })
+          }
+        </div>
+        <div className="content">
+            <div className="category-type">
+              <span>Products under <strong>{currentCategory} category</strong></span> 
             </div>
-            <div>
-              <h3>{productObj.price}</h3>
+            <div className="products">
+
+              {productsToDispay.map((productObj) => {
+                return (
+                  <div
+                  className="product"
+                  key={productObj.id}>
+
+                    <img className="productImage" src={productObj.image} alt={productObj.title} />
+                    <span className="productName">{productObj.title}</span>
+                    <button className="addToCart" onClick={() => props.addItemToCart(productObj)}>Add to cart</button>
+                  </div>
+                );
+              })}
             </div>
-            <div>
-              <p>{productObj.description}</p>
-            </div>
-            <div>
-              <button onClick={() => handleViewItem(productObj)}>View Item</button>
-              <button onClick={() => props.addItemToCart(productObj)}>Add to Cart</button>
-            </div>
-          </div>
-        );
-      })}
-    </>
+      </div>
+    </div>
+    
   );
 }
 
@@ -42,7 +61,6 @@ const mapStateToProps = (store) => {
 };
 const mapDispatchToProps = (dispatch) => {
   return {
-    viewItem: (item) => dispatch({type:"ViewItem", payload: item}),
     addItemToCart: (item) => dispatch({type: "AddToCart", payload: item})
   }
 }

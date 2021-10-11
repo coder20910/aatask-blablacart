@@ -1,20 +1,15 @@
 import { products } from "../data/data";
+import { categories } from "../data/data";
 import {createStore} from "redux";
 let initialState = {
     products,
     cart: [],
-    currItem : null
+    cartCount:0,
+    currItem : null,
+    categories,
 }
 function cartReducer(state=initialState, action){
     switch (action.type) {
-        case "ViewItem": 
-           return   {
-            products: state.products,
-            cart: state.cart,
-            cartCount: state.cartCount,
-            currItem: action.payload
-        };
-        
         case "AddToCart": 
             const inCart = state.cart.find((item) =>
                 item.id === action.payload.id 
@@ -24,10 +19,7 @@ function cartReducer(state=initialState, action){
            return {
                ...state,
                cart: inCart
-               ? state.cart.map((item) => 
-                   item.id === action.payload.id 
-                   ? {...item, count : item.count + 1} 
-                   : item)
+               ? [...state.cart]
                : [...state.cart, {...action.payload, count: 1}]
            };
         case "DeleteItem":
