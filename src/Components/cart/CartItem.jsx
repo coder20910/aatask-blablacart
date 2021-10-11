@@ -27,11 +27,11 @@ function CartItem({item, adjustItemQty, deleteFromCart}) {
                     <div className="quantity">
                     Quantity :
                     <div className="upDown">
-                        <div class="arrow arrowUp" onClick={handleUpButton}></div>
+                        <div className="arrow arrowUp" onClick={handleUpButton}></div>
                         <div>
-                            <input className="inputNum" type="number"  min="1" value={itemCount}/>
+                            <input className="inputNum" type="number"  min="1" readOnly value={itemCount}/>
                         </div>
-                        <div class="arrow arrowDown" onClick={handleDownButton}></div>
+                        <div className="arrow arrowDown" onClick={handleDownButton}></div>
                     </div>
                     </div>
             </div>

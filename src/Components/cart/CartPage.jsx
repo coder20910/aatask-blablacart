@@ -1,23 +1,9 @@
-import React,{useState, useEffect} from 'react';
+import React from 'react';
 import {connect} from "react-redux";
 import CartItem from './CartItem';
 
 function Cart(props) {
     let cart = props.cart;
-    
-    const [totalItem, setTotalItem] = useState(0);
-
-    const [loading, setLoading] = useState(true);
-    // 1
-    useEffect(() => {
-        setLoading(true);
-        let count = 0;
-        cart.forEach((item) => {
-            count += item.count
-        })
-        setTotalItem(count);
-
-    }, [cart])
     
     return (
         <>

@@ -6,7 +6,7 @@ function HomePage(props) {
   let {products, categories} = props;
   const [currentCategory, setCurrentCategory]  = useState("All");  
   const [productsToDispay, setProducts] = useState([]);
-
+ 
   const handleCategory = (category) => {
     setCurrentCategory(category)
     if (category==="All"){
@@ -20,14 +20,14 @@ function HomePage(props) {
   }
   useEffect(() => {
     setProducts(products);
-  },[]);
+  },[products]);
   return (
     <div className="main">
         <div className="category-all">
           <div className="category">Categories</div>
           {
-            categories.map((category)=>{
-              return <div className="category" onClick={()=>handleCategory(category)}>{category}</div>
+            categories.map((category, index)=>{
+              return <div key={index} className="category" onClick={()=>handleCategory(category)}>{category}</div>
             })
           }
         </div>

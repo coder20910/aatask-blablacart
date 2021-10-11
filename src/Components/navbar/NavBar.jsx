@@ -47,7 +47,6 @@ function NavBar({cart}) {
                     </ul>
                 </nav>
             </header>
-            <br />
         </div>
     )
 }
